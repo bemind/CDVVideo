@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="com.emesonsantana.cdvvideo" version="0.2.4">
+    <name>Video Player</name>
+    <description>Cordova Video Player Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,device</keywords>
+    <js-module src="www/CDVVideo.js" name="video">
+        <clobbers target="CDVVideo" />
+    </js-module>
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="CDVVideo">
+                <param name="ios-package" value="CDVVideo"/>
+            </feature>
+        </config-file>
+        <header-file src="src/ios/CDVVideo.h" />
+        <source-file src="src/ios/CDVVideo.m" />
+        <header-file src="src/ios/MovieViewController.h" />
+        <source-file src="src/ios/MovieViewController.m" />
+
+        <framework src="MediaPlayer.framework" />
+    </platform>
+</plugin>
