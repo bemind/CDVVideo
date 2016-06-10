@@ -36,23 +36,8 @@
     }
   }
   if (player) {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(MovieDidFinish:) name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
     [self.viewController presentMoviePlayerViewControllerAnimated:player];
   }
-}
-
-- (void)MovieDidFinish:(NSNotification *)notification {
-  [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                  name:MPMoviePlayerPlaybackDidFinishNotification
-                                                object:nil];
-  [self writeJavascript:[NSString stringWithFormat:@"window.CDVVideo.finished(\"%@\");", movie]];
-
-}
-
-- (void)dealloc {
-  //[player release];
-  //[movie release];
-  //[super dealloc];
 }
 
 @end
