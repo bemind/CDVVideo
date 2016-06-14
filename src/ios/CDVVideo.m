@@ -45,7 +45,7 @@
   [[NSNotificationCenter defaultCenter] removeObserver:self
                                                   name:MPMoviePlayerPlaybackDidFinishNotification
                                                 object:nil];
-  NSString* jsString = [NSString stringWithFormat:@"window.plugins.CDVVideo.finished(\"%@\");", movie];
+  NSString* jsString = [NSString stringWithFormat:@"window.CDVVideo.finished(\"%@\");", movie];
   [self.webView stringByEvaluatingJavaScriptFromString:jsString];
 
 }
