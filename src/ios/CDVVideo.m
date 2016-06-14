@@ -36,8 +36,18 @@
     }
   }
   if (player) {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(MovieDidFinish:) name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
     [self.viewController presentMoviePlayerViewControllerAnimated:player];
   }
+}
+
+- (void)MovieDidFinish:(NSNotification *)notification {
+  [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                  name:MPMoviePlayerPlaybackDidFinishNotification
+                                                object:nil];
+  NSString* jsString = [NSString stringWithFormat:@"window.plugins.CDVVideo.finished(\"%@\");", movie];
+  [self.webView stringByEvaluatingJavaScriptFromString:jsString];
+
 }
 
 @end
